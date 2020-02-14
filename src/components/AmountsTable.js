@@ -10,7 +10,7 @@ function AmountsTable(props) {
   }
  
   const headersItems = headers.map((item, i) => 
-    <td key={i}>{item}</td>
+    <th key={i}>{item}</th>
   );
 
   const sortedItems = items.sort((a, b) => {
