@@ -30,12 +30,22 @@ function App() {
     setApiConfig(apiConfigs[selectedIndex]);
   }
 
+  function handleRefreshButtonClick(e) {
+    e.preventDefault();
+    getData();
+  }
+
+  function handleSortButtonClick(e) {
+    e.preventDefault();
+    setSortOrder(1 - sortOrder);
+  }
+
   const selectOptions = apiConfigs.map((api) => api.title);
   return (
     <div className="App">
       <ApiSelect options={selectOptions} onChange={handleApiSelectChange} />
-      <button onClick={getData}>Refresh</button>
-      <button onClick={() => setSortOrder(1 - sortOrder)}>Sort {sortOrders[1 - sortOrder]}</button>
+      <button onClick={handleRefreshButtonClick}>Refresh</button>
+      <button onClick={handleSortButtonClick}>Sort {sortOrders[1 - sortOrder]}</button>
       <AmountsTable items={items} sortOrder={sortOrders[sortOrder]} sortColumn={apiConfig.amountColumn} />
     </div>
   );
